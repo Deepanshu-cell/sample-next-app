@@ -5,6 +5,10 @@ import { cn } from "@/lib/utils";
 import { Cloud, Server } from "lucide-react";
 import { ImBlocked } from "react-icons/im";
 
+const handleDelete=(row)=>{
+  
+}
+
 // camera table columns here
 export const cameraTableColumns = [
   {
@@ -162,7 +166,7 @@ export const cameraTableColumns = [
     accessorKey: "actions",
     header: "ACTIONS",
     cell: () => (
-      <Button variant={"ghost"} size="sm" className="">
+      <Button variant={"ghost"} size="sm" onClick={handleDelete}>
         <ImBlocked className="text-gray-500" />
       </Button>
     ), // Custom Cell Rendering

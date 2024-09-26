@@ -17,7 +17,15 @@ import {
 } from "@/components/ui/table";
 import { Button } from "../ui/button";
 import { Input } from "@/components/ui/input";
-import { MapPin, Search, Wifi } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  MapPin,
+  Search,
+  Wifi,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -32,12 +40,17 @@ export function DataTable({ columns, data, heading, desc }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pageSize, setPageSize] = React.useState(10); // Set initial page size
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0, // Start from the first page
+    pageSize: 10, // Default page size
+  });
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    getPaginationRowModel: getPaginationRowModel(), // Ensure pagination row model is applied
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
@@ -47,7 +60,10 @@ export function DataTable({ columns, data, heading, desc }) {
       sorting,
       columnFilters,
       rowSelection,
+      pagination, // Apply pagination state
     },
+    onPaginationChange: setPagination, // Update pagination state
+    manualPagination: false, // Enable automatic pagination
   });
 
   // Handle location filter
@@ -64,6 +80,15 @@ export function DataTable({ columns, data, heading, desc }) {
       ...prev.filter((filter) => filter.id !== "status"),
       status ? { id: "status", value: status } : {},
     ]);
+  };
+
+  // Update page size when limit setter changes
+  const handlePageSizeChange = (size) => {
+    setPagination((prev) => ({
+      ...prev,
+      pageSize: Number(size),
+    }));
+    table.setPageSize(Number(size)); // Dynamically set pageSize in table
   };
 
   return (
@@ -174,23 +199,60 @@ export function DataTable({ columns, data, heading, desc }) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
+
+      {/* Pagination and limit setter */}
+      <div className="flex items-center justify-between space-x-2 py-4">
+        {/* Rows per page setter */}
+        <div className="flex items-center">
+          <span className="mr-2 text-sm">Rows per page:</span>
+          <Select onValueChange={handlePageSizeChange} value={pageSize}>
+            <SelectTrigger className="w-[80px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="5">5</SelectItem>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Pagination controls */}
+        <div className="flex items-center space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.setPageIndex(0)} // Skip to first page
+            disabled={!table.getCanPreviousPage()}
+          >
+            <ChevronsLeft className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)} // Skip to last page
+            disabled={!table.getCanNextPage()}
+          >
+            <ChevronsRight className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
     </div>
   );
