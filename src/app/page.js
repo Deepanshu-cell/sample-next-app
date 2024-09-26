@@ -28,9 +28,9 @@ export default function Home() {
       `https://api-app-staging.wobot.ai/app/v1/fetch/cameras`
     );
 
-  console.log(data, "data here");
+    console.log(data, "data here");
     // Setting camera data
-    if(data?.length>0){
+    if (data?.length > 0) {
       setCameraData(data);
     }
   };
@@ -46,7 +46,12 @@ export default function Home() {
       </div>
       {/* table outside container */}
       <div className="mx-auto table-container px-5 py-3 mt-5">
-        <DataTable columns={cameraTableColumns} data={cameraData} />
+        <DataTable
+          columns={cameraTableColumns}
+          data={cameraData}
+          heading={"Cameras"}
+          desc={"Manage Your Cameras here"}
+        />
       </div>
     </div>
   );

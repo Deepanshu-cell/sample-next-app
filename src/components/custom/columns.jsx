@@ -34,7 +34,7 @@ export const cameraTableColumns = [
     header: "NAME",
     cell: ({ row }) => (
       <div className="text-gray-600 text-[13px] flex items-center gap-x-2">
-        <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+        <div className="w-2 h-2 bg-green-600 rounded-full"></div>
         <span>{`${row?.original?.name || "N/A"}`}</span>
       </div>
     ),
@@ -47,9 +47,9 @@ export const cameraTableColumns = [
         <div className="flex items-center gap-x-1">
           <Cloud size={14} className="text-gray-400" />
           {/* <!-- Circular Progress --> */}
-          <div class="relative size-4">
+          <div className="relative size-4">
             <svg
-              class="size-full -rotate-90"
+              className="size-full -rotate-90"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -59,7 +59,7 @@ export const cameraTableColumns = [
                 cy="20"
                 r="16"
                 fill="none"
-                class="stroke-current text-gray-200 dark:text-neutral-700"
+                className="stroke-current text-gray-200 dark:text-neutral-700"
                 stroke-width="4"
               ></circle>
               {/* <!-- Progress Circle --> */}A
@@ -68,7 +68,7 @@ export const cameraTableColumns = [
                 cy="18"
                 r="16"
                 fill="none"
-                class="stroke-current text-orange-500 dark:text-blue-500"
+                className="stroke-current text-orange-500 dark:text-blue-500"
                 stroke-width="4"
                 stroke-dasharray="100"
                 stroke-dashoffset="25"
@@ -80,9 +80,9 @@ export const cameraTableColumns = [
         </div>
         <div className="flex items-center gap-x-1">
           <Server size={14} className="text-gray-400" />
-          <div class="relative size-4">
+          <div className="relative size-4">
             <svg
-              class="size-full -rotate-90"
+              className="size-full -rotate-90"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -92,7 +92,7 @@ export const cameraTableColumns = [
                 cy="20"
                 r="16"
                 fill="none"
-                class="stroke-current text-gray-200 dark:text-neutral-700"
+                className="stroke-current text-gray-200 dark:text-neutral-700"
                 stroke-width="4"
               ></circle>
               {/* <!-- Progress Circle --> */}A
@@ -101,7 +101,7 @@ export const cameraTableColumns = [
                 cy="18"
                 r="16"
                 fill="none"
-                class="stroke-current text-green-600 dark:text-blue-500"
+                className="stroke-current text-green-600 dark:text-blue-500"
                 stroke-width="4"
                 stroke-dasharray="100"
                 stroke-dashoffset="25"
@@ -149,8 +149,8 @@ export const cameraTableColumns = [
         className={cn(
           "text-xs font-semibold rounded-sm p-2 py-1 shadow-sm",
           row?.original?.status === "Active"
-            ? "text-green-600 bg-green-50"
-            : "text-gray-500 bg-gray-200"
+            ? "text-green-600 bg-green-50 hover:bg-green-100"
+            : "text-gray-500 bg-gray-200 hover:bg-gray-300"
         )}
         size="xs"
       >
