@@ -3,6 +3,7 @@ import { cameraTableColumns } from "@/components/custom/columns";
 import { DataTable } from "@/components/custom/data-table";
 import { useEffect, useState } from "react";
 import { GET } from "../../utils/https-methods";
+import { toast } from "sonner";
 
 export default function Home() {
   const data = [
@@ -39,6 +40,12 @@ export default function Home() {
     getCameraData();
   }, []);
 
+  // Delete handler
+  const handleDeleteRow = (Row) => {
+    setCameraData((prevData) => prevData.filter((row) => row?.id !== Row?.id));
+    toast.success(`${Row?.name} deleted successfully`,{position:'top-right'});
+  };
+
   return (
     <div className="main-container m-5">
       <div className="heading-container text-center mt-3">
@@ -47,7 +54,7 @@ export default function Home() {
       {/* table outside container */}
       <div className="mx-auto table-container px-5 py-3 mt-5">
         <DataTable
-          columns={cameraTableColumns}
+          columns={cameraTableColumns(handleDeleteRow)}
           data={cameraData}
           heading={"Cameras"}
           desc={"Manage Your Cameras here"}

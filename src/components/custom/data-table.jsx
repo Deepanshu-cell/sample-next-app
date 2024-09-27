@@ -89,6 +89,7 @@ export function DataTable({ columns, data, heading, desc }) {
       pageSize: Number(size),
     }));
     table.setPageSize(Number(size)); // Dynamically set pageSize in table
+    setPageSize(size);
   };
 
   return (
@@ -210,10 +211,10 @@ export function DataTable({ columns, data, heading, desc }) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="5">5</SelectItem>
-              <SelectItem value="10">10</SelectItem>
-              <SelectItem value="20">20</SelectItem>
-              <SelectItem value="50">50</SelectItem>
+              <SelectItem value={5}>5</SelectItem>
+              <SelectItem value={10}>10</SelectItem>
+              <SelectItem value={20}>20</SelectItem>
+              <SelectItem value={50}>50</SelectItem>
             </SelectContent>
           </Select>
         </div>

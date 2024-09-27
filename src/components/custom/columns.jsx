@@ -1,16 +1,11 @@
-"use client";
 import { Button } from "../ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { Cloud, Server } from "lucide-react";
 import { ImBlocked } from "react-icons/im";
 
-const handleDelete=(row)=>{
-  
-}
-
-// camera table columns here
-export const cameraTableColumns = [
+// Accept deleteRow function
+export const cameraTableColumns = (deleteRow) => [
   {
     id: "select",
     header: ({ table }) => (
@@ -50,14 +45,12 @@ export const cameraTableColumns = [
       <div className="flex items-center gap-x-2">
         <div className="flex items-center gap-x-1">
           <Cloud size={14} className="text-gray-400" />
-          {/* <!-- Circular Progress --> */}
           <div className="relative size-4">
             <svg
               className="size-full -rotate-90"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* <!-- Background Circle --> */}
               <circle
                 cx="20"
                 cy="20"
@@ -66,7 +59,6 @@ export const cameraTableColumns = [
                 className="stroke-current text-gray-200 dark:text-neutral-700"
                 stroke-width="4"
               ></circle>
-              {/* <!-- Progress Circle --> */}A
               <circle
                 cx="18"
                 cy="18"
@@ -90,7 +82,6 @@ export const cameraTableColumns = [
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* <!-- Background Circle --> */}
               <circle
                 cx="20"
                 cy="20"
@@ -99,7 +90,6 @@ export const cameraTableColumns = [
                 className="stroke-current text-gray-200 dark:text-neutral-700"
                 stroke-width="4"
               ></circle>
-              {/* <!-- Progress Circle --> */}A
               <circle
                 cx="18"
                 cy="18"
@@ -165,10 +155,14 @@ export const cameraTableColumns = [
   {
     accessorKey: "actions",
     header: "ACTIONS",
-    cell: () => (
-      <Button variant={"ghost"} size="sm" onClick={handleDelete}>
+    cell: ({ row }) => (
+      <Button
+        variant={"ghost"}
+        size="sm"
+        onClick={() => deleteRow(row.original)} // Call deleteRow with row id
+      >
         <ImBlocked className="text-gray-500" />
       </Button>
-    ), // Custom Cell Rendering
+    ),
   },
 ];
