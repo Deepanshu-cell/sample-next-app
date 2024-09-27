@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Cloud, Server } from "lucide-react";
 import { ImBlocked } from "react-icons/im";
 
-// Accept deleteRow function
+
 export const cameraTableColumns = (deleteRow) => [
   {
     id: "select",
@@ -57,7 +57,7 @@ export const cameraTableColumns = (deleteRow) => [
                 r="16"
                 fill="none"
                 className="stroke-current text-gray-200 dark:text-neutral-700"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <circle
                 cx="18"
@@ -65,10 +65,10 @@ export const cameraTableColumns = (deleteRow) => [
                 r="16"
                 fill="none"
                 className="stroke-current text-orange-500 dark:text-blue-500"
-                stroke-width="4"
-                stroke-dasharray="100"
-                stroke-dashoffset="25"
-                stroke-linecap="round"
+                strokeWidth="4"
+                strokeDasharray="100"
+                strokeDashoffset="25"
+                strokeLinecap="round"
               ></circle>
             </svg>
             <span className="text-gray-600 text-[8px] absolute -bottom-[1.2px] left-[5px]">{`${row?.original?.health?.cloud}`}</span>
@@ -88,7 +88,7 @@ export const cameraTableColumns = (deleteRow) => [
                 r="16"
                 fill="none"
                 className="stroke-current text-gray-200 dark:text-neutral-700"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <circle
                 cx="18"
@@ -96,10 +96,10 @@ export const cameraTableColumns = (deleteRow) => [
                 r="16"
                 fill="none"
                 className="stroke-current text-green-600 dark:text-blue-500"
-                stroke-width="4"
-                stroke-dasharray="100"
-                stroke-dashoffset="25"
-                stroke-linecap="round"
+                strokeWidth="4"
+                strokeDasharray="100"
+                strokeDashoffset="25"
+                strokeLinecap="round"
               ></circle>
             </svg>
             <span className="text-gray-600 text-[8px] absolute -bottom-[1.2px] left-[5px]">{`${row?.original?.health?.device}`}</span>
@@ -159,7 +159,7 @@ export const cameraTableColumns = (deleteRow) => [
       <Button
         variant={"ghost"}
         size="sm"
-        onClick={() => deleteRow(row.original)} // Call deleteRow with row id
+        onClick={() => deleteRow(row.original)} 
       >
         <ImBlocked className="text-gray-500" />
       </Button>

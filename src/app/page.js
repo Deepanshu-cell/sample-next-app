@@ -6,21 +6,6 @@ import { GET } from "../../utils/https-methods";
 import { toast } from "sonner";
 
 export default function Home() {
-  const data = [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "489e1d42",
-      amount: 125,
-      status: "processing",
-      email: "example@gmail.com",
-    },
-  ];
-
   const [cameraData, setCameraData] = useState([]);
 
   // Getting camera data
@@ -29,7 +14,6 @@ export default function Home() {
       `https://api-app-staging.wobot.ai/app/v1/fetch/cameras`
     );
 
-    console.log(data, "data here");
     // Setting camera data
     if (data?.length > 0) {
       setCameraData(data);
@@ -48,10 +32,12 @@ export default function Home() {
 
   return (
     <div className="main-container m-5">
+      {/* Page Header */}
       <div className="heading-container text-center mt-3">
         <h3 className="text-blue-500 text-3xl font-semibold">Wobot AI</h3>
       </div>
-      {/* table outside container */}
+
+      {/* Table container */}
       <div className="mx-auto table-container px-5 py-3 mt-5">
         <DataTable
           columns={cameraTableColumns(handleDeleteRow)}
