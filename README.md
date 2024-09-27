@@ -1,39 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Sample Next.js App
+This project demonstrates a Next.js application featuring a dynamic table with sorting, filtering, pagination, and search capabilities. It uses @tanstack/react-table for table management and provides filters based on location and status, along with pagination controls.
 
-## Getting Started
+Features
+Dynamic Table: Powered by TanStack's React Table with customizable columns and row selection.
+Filters: Filter table data by location and status.
+Pagination: Navigate through pages and jump to the first or last page.
+Search: Search entries by name.
+Tech Stack
+Next.js
+React
+TanStack React Table
+TailwindCSS
 
-First, run the development server:
+Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. git clone https://github.com/Deepanshu-cell/sample-next-app.
+2. cd sample-next-app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
+3.npm install
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Run the development server:
+4. npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open http://localhost:3000 to view the app.
 
-## Learn More
+Table Functionalities
+Search: Type in the search bar to find entries by name.
+Filter: Use the dropdowns to filter by location or status.
+Pagination: Control page navigation with Previous, Next, and jump to first/last page buttons.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# sample-next-app
-# sample-next-app
-# sample-next-app
